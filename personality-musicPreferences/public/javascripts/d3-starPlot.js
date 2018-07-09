@@ -15,7 +15,7 @@ var RadarChart = {
      TranslateY: 30,
      ExtraWidthX: 100,
      ExtraWidthY: 100,
-     color: d3.scaleOrdinal().range(["#6F257F", "#CA0D59"])
+     color: d3.scale.ordinal().range(["#6F257F", "#CA0D59"])
     };
   
     if('undefined' !== typeof options){
@@ -32,14 +32,18 @@ var RadarChart = {
     var total = allAxis.length;
     var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
     var Format = d3.format('%');
-    d3.select(id).select("svg").remove();
-
+    //d3.select(id).remove();
+    //d3.select(id).select("svg").remove();
+ 
     var g = d3.select(id)
         .append("svg")
+        .attr("id", "star")
         .attr("width", cfg.w+cfg.ExtraWidthX)
         .attr("height", cfg.h+cfg.ExtraWidthY)
         .append("g")
         .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+
+
 
     var tooltip;
   
@@ -150,7 +154,6 @@ var RadarChart = {
       series++;
     });
     series=0;
-
 
 var tooltip = d3.select("body").append("div").attr("class", "toolTip");
     d.forEach(function(y, x){
