@@ -13,6 +13,8 @@ var config = {
 var distsP = [];
 var musicAVG = {};
 var data = [];
+var users = [10208546854389224, 1563678377056306, 1530736360375283, 2054932291405079, 1618190434907835, 1699351673460266, 1514091155313332, 1618039888276205, 1553537528027304, 1637518839632801, 10215430654344419, 1522314377864628, 10209650048201294, 2017981634883481, 10215796188923215, 2010647765618965, 1753478071331041, 772600926262323, 1504078906355689, 10203948114340915, 1827922500615547, 1706666589387705, 1609898125756255, 2455041724720870, 1626551127391406, 1244898128943328, 1274496899362093, 1575540589166609, 1569347423101232, 10208732194622753, 1723951330982372] ;
+var selectedUser = users[Math.floor(Math.random()*users.length)];
 
 
 function updateStar(id, d, options) {
@@ -63,8 +65,16 @@ function updateData (musicMean) {
 
 				
 
-d3.csv('/data/dados.csv' , function(error, rows) {
-   user = rows[0];
+d3.csv('/data/dados1.csv' , function(error, rows) {
+   
+   rows.forEach( function(element, index) {
+    
+    console.log(element["Id"]);
+     if(element["Id"] == selectedUser.toString()){
+      user = element;
+     };
+   });
+   
 
    rows.forEach( function(element, index) {
     distsP.push([Number(element["Neuroticism"]),Number(element["Conscientiousness"]),Number(element["Extraversion"]),Number(element["Openness"]),Number(element["Agreeableness"])]);

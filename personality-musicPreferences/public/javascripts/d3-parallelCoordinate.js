@@ -1,6 +1,6 @@
 var margin = {top: 30, right: 10, bottom: 10, left: 20},
-    width_parallel = 960 - margin.left - margin.right,
-    height_parallel = 500 - margin.top - margin.bottom;
+    width_parallel = 800 - margin.left - margin.right,
+    height_parallel = 400 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal().rangePoints([0, width_parallel], 1),
     y = {},
@@ -52,9 +52,12 @@ d3.csv("/data/musicasUser.csv", function(error, cars) {
     }
   }));
 
+
   cars = cars.filter(function(d){
-    if(d["userId"] == 10208546854389224){
+    if(d["userId"] == selectedUser){
+     // selectedLines.push(d);
       return d;
+
     }
      
   });
@@ -126,6 +129,8 @@ d3.csv("/data/musicasUser.csv", function(error, cars) {
       .attr("x", -8)
       .attr("width", 16);
   }
+
+
 );
 
 
