@@ -67,8 +67,7 @@ function updateData (musicMean) {
 
 d3.csv('/data/dados1.csv' , function(error, rows) {
    
-   rows.forEach( function(element, index) {
-    
+   rows.forEach( function(element, index) { 
     console.log(element["Id"]);
      if(element["Id"] == selectedUser.toString()){
       user = element;
